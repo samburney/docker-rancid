@@ -1,0 +1,2 @@
+# Run nightly at 02:00
+#* 2 * * * /usr/bin/rancid-run >/var/log/rancid/cron.log 2>/var/log/rancid/cron.err

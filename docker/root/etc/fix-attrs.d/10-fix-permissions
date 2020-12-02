@@ -1,0 +1,3 @@
+/var/rancid                 true    rancid,100:101  0644    2755
+/var/log/rancid             true    rancid,100:101  0644    2755
+/var/rancid/.cloginrc       true    rancid,100:101  0600    0700

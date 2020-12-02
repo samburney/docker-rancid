@@ -1,0 +1,22 @@
+--- openssh-portable-V_8_4_P1/regress/unittests/sshkey/test_sshkey.c
++++ openssh-portable-V_8_4_P1.new/regress/unittests/sshkey/test_sshkey.c
+@@ -261,8 +261,6 @@
+ #endif
+ 
+ 	TEST_START("generate KEY_RSA");
+-	ASSERT_INT_EQ(sshkey_generate(KEY_RSA, 767, &kr),
+-	    SSH_ERR_KEY_LENGTH);
+ 	ASSERT_INT_EQ(sshkey_generate(KEY_RSA, 1024, &kr), 0);
+ 	ASSERT_PTR_NE(kr, NULL);
+ 	ASSERT_PTR_NE(kr->rsa, NULL);
+--- openssh-portable-V_8_4_P1/sshkey.h
++++ openssh-portable-V_8_4_P1.new/sshkey.h
+@@ -48,7 +48,7 @@
+ # define EC_POINT	void
+ #endif /* WITH_OPENSSL */
+ 
+-#define SSH_RSA_MINIMUM_MODULUS_SIZE	1024
++#define SSH_RSA_MINIMUM_MODULUS_SIZE	512
+ #define SSH_KEY_MAX_SIGN_DATA_SIZE	(1 << 20)
+ 
+ struct sshbuf;

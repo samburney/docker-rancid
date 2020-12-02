@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv sh
+
+echo "Starting crond..."
+
+chmod u+s /usr/bin/crontab
+
+exec \
+    /usr/sbin/crond -f -d 8
+
+exit 1

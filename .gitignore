@@ -1,0 +1,6 @@
+data/*
+!data/rancid
+
+data/rancid/*
+!data/rancid/crontab.dist
+!data/rancid/rancid.conf.dist
