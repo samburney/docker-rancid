@@ -10,5 +10,7 @@ services:
         volumes:
             - './data/rancid/rancid.conf:/etc/rancid/rancid.conf:ro'
             - './data/rancid/crontab:/var/spool/cron/crontabs/rancid:ro'
+            - './data/rancid/msmtprc:/etc/msmtprc:ro'
+            - './data/rancid/aliases:/etc/aliases:ro'
             - './data/rancid/backups:/var/rancid'
             - './data/rancid/logs:/var/log/rancid'
