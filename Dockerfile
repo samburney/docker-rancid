@@ -1,4 +1,4 @@
-FROM library/alpine:3.12.1
+FROM lsiobase/alpine:3.12
 
 LABEL maintainer "Sam Burney <sburney@sifnt.net.au>"
 
@@ -16,8 +16,6 @@ RUN cd /usr/src/openssh && \
     mv -f /etc/apk/repositories.new /etc/apk/repositories
 
 # Environment variables for future use
-ARG S6_OVERLAY_RELEASE=https://github.com/just-containers/s6-overlay/releases/latest/download/s6-overlay-amd64.tar.gz
-ENV S6_OVERLAY_RELEASE=${S6_OVERLAY_RELEASE}
 ENV PACKAGES="busybox busybox-extras git rancid msmtp"
 ENV UNTRUSTED_PACKAGES="openssh-client"
 
@@ -27,11 +25,6 @@ RUN apk update --allow-untrusted && \
     apk add ${PACKAGES} && \
     apk add --allow-untrusted ${UNTRUSTED_PACKAGES} && \
     rm -rf /var/cache/apk/*
-
-# Install s6-overlay
-ADD ${S6_OVERLAY_RELEASE} /tmp/s6overlay.tar.gz
-RUN tar xzf /tmp/s6overlay.tar.gz -C / \
-    && rm /tmp/s6overlay.tar.gz
 
 # Add sendmail command
 RUN ln -sf /usr/bin/msmtp /usr/sbin/sendmail && \
