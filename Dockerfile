@@ -30,6 +30,14 @@ RUN apk update --allow-untrusted && \
 RUN ln -sf /usr/bin/msmtp /usr/sbin/sendmail && \
     chmod u+s /usr/bin/msmtp
 
+# Add Vyattta/VyOS support
+RUN git clone https://github.com/jontow/rancid-vyos.git /tmp/rancid-vyos && \
+    cp /tmp/rancid-vyos/vlogin /usr/bin/ && \
+    cp /tmp/rancid-vyos/vyos.pm /usr/lib/rancid/ && \
+    cat /tmp/rancid-vyos/rancid.types.conf >> /etc/rancid/rancid.types.conf && \
+    echo "#" >> /etc/rancid/rancid.types.conf && \
+    rm -rf /tmp/rancid-vyos
+
 # Add any necessary files to filesystem
 ADD /docker/root/ /
 
