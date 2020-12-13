@@ -7,6 +7,7 @@ services:
         restart: 'unless-stopped'
         environment:
             TZ: 'Australia/Adelaide'
+            HOME: '/var/rancid'
         volumes:
             - './data/rancid/rancid.conf:/etc/rancid/rancid.conf:ro'
             - './data/rancid/crontab:/var/spool/cron/crontabs/rancid:ro'
